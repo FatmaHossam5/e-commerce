@@ -22,6 +22,9 @@ export const appRouter=(app)=>{
     const baseUrl = process.env.BASEURL
 //convert Buffer Data
 app.use(express.json())
+app.use(express.urlencoded({extended:false}))
+//setup cors
+app.use(cors({}))
 // morgan check response
 if (process.env.MOOD === 'DEV') {
     app.use(morgan("dev"))
