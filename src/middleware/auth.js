@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import { findById } from '../../DB/DBMethods.js';
 import userModel  from '../../DB/model/user.model.js';
-import { asyncHandler } from '../services/errorhandling.js';
+import { asyncHandler } from '../services/errorHandling.js';
 
 export const roles = {
     Admin: "Admin",
