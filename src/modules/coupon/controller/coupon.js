@@ -1,6 +1,6 @@
 import { create, findByIdAndDelete, findOne, findOneAndUpdate } from "../../../../DB/DBMethods.js"
 import couponModel from "../../../../DB/model/coupon.model.js"
-import { asyncHandler } from "../../../services/errorhandling.js"
+import { asyncHandler } from "../../../services/errorHandling.js"
 
 
 export const createCoupon = asyncHandler(
