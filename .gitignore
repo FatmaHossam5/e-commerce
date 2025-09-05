@@ -128,3 +128,4 @@ public/uploads/
 # Build outputs
 dist/
 build/
+.vercel
