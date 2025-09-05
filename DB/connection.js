@@ -1,8 +1,20 @@
 import mongoose from 'mongoose'
-const connectDB  = async ()=>{
-    return await mongoose.connect(process.env.DBURI)
-    .then(res=>console.log(`DB Connected successfully on .........${process.env.DBURI} `))
-    .catch(err=>console.log(` Fail to connect  DB.........${err} `))
+
+// Set mongoose options to avoid deprecation warnings
+mongoose.set('strictQuery', false)
+
+const connectDB = async () => {
+    try {
+        const conn = await mongoose.connect(process.env.DBURI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        })
+        console.log(`✅ DB Connected successfully to: ${conn.connection.host}`)
+        return conn
+    } catch (err) {
+        console.error(`❌ DB Connection failed: ${err.message}`)
+        process.exit(1)
+    }
 }
 
 
