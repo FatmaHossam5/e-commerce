@@ -9,10 +9,10 @@ const connectDB = async () => {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })
-        console.log(`✅ DB Connected successfully to: ${conn.connection.host}`)
+        console.log(`DB Connected successfully to: ${conn.connection.host}`)
         return conn
     } catch (err) {
-        console.error(`❌ DB Connection failed: ${err.message}`)
+        console.error(`DB Connection failed: ${err.message}`)
         process.exit(1)
     }
 }
