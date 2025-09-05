@@ -97,41 +97,72 @@ app.get('/', (req, res) => {
     })
 })
 
-app.get(`${baseUrl}`, (req, res) => {
+// API v1 Welcome and Documentation Endpoint
+app.get(`https://e-commerce-gr8wmbyf3-fatmahossam5s-projects.vercel.app/${baseUrl}`, (req, res) => {
     res.status(200).json({
         success: true,
-        message: "🚀 E-Commerce API v1 - Endpoints Available",
+        message: " E-Commerce API v1 - Portfolio Project by Fatma Hossam",
+        version: "1.0.0",
+        status: " Live & Operational",
+        description: "Professional Node.js E-Commerce API with complete CRUD operations",
+        author: {
+            name: "Fatma Hossam",
+            github: "https://github.com/FatmaHossam5",
+            email: "fatmahossam15590@gmail.com"
+        },
+        tech_stack: {
+            runtime: "Node.js 16+",
+            framework: "Express.js",
+            database: "MongoDB Atlas",
+            deployment: "Vercel",
+            security: ["JWT", "bcrypt", "Helmet", "Rate Limiting", "CORS"]
+        },
         base_url: `${req.protocol}://${req.get('host')}${baseUrl}`,
+        quick_test: {
+            products: `${req.protocol}://${req.get('host')}${baseUrl}/product/productList`,
+            admin_login: `POST ${req.protocol}://${req.get('host')}${baseUrl}/auth/login`
+        },
         available_endpoints: {
-            authentication: {
-                login: `POST ${baseUrl}/auth/login`,
-                register: `POST ${baseUrl}/auth/sign`,
-                confirm_email: `GET ${baseUrl}/auth/confirmEmail/:token`
+            " Authentication": {
+                "Admin Login": `POST ${baseUrl}/auth/login`,
+                "User Register": `POST ${baseUrl}/auth/sign`,
+                "Confirm Email": `GET ${baseUrl}/auth/confirmEmail/:token`,
+                "Reset Password": `POST ${baseUrl}/auth/forgetPassword`
             },
-            products: {
-                list_all: `GET ${baseUrl}/product/productList`,
-                create: `POST ${baseUrl}/product (Admin only)`,
-                update: `PUT ${baseUrl}/product/:id (Admin only)`
+            "Products": {
+                "Get All Products": `GET ${baseUrl}/product/productList`,
+                "Create Product": `POST ${baseUrl}/product (Admin)`,
+                "Update Product": `PUT ${baseUrl}/product/:id (Admin)`,
+                "Delete Product": `DELETE ${baseUrl}/product/:id (Admin)`
             },
-            categories: {
-                create: `POST ${baseUrl}/category (Admin only)`,
-                subcategories: `POST ${baseUrl}/subCategory (Admin only)`
+            "🛒 Shopping": {
+                "Add to Cart": `POST ${baseUrl}/cart`,
+                "Create Order": `POST ${baseUrl}/order`,
+                "Get User Orders": `GET ${baseUrl}/order`,
+                "Add to Wishlist": `POST ${baseUrl}/product/:id/wishlist`
             },
-            shopping: {
-                cart: `POST ${baseUrl}/cart`,
-                orders: `POST ${baseUrl}/order`,
-                wishlist: `POST ${baseUrl}/product/:id/wishlist`
+            " Categories": {
+                "Get Categories": `GET ${baseUrl}/category`,
+                "Create Category": `POST ${baseUrl}/category (Admin)`,
+                "Create Subcategory": `POST ${baseUrl}/subCategory (Admin)`
             },
-            admin: {
-                brands: `POST ${baseUrl}/brand (Admin only)`,
-                coupons: `POST ${baseUrl}/coupon (Admin only)`,
-                reviews: `GET ${baseUrl}/reviews`
+            "Admin Features": {
+                "Manage Brands": `POST ${baseUrl}/brand (Admin)`,
+                "Manage Coupons": `POST ${baseUrl}/coupon (Admin)`,
+                "View Reviews": `GET ${baseUrl}/reviews`,
+                "User Management": `GET ${baseUrl}/user (Admin)`
             }
         },
         demo_credentials: {
-            note: "Use these credentials to test admin endpoints",
-            admin_email: "Set via environment variables",
-            admin_password: "Set via environment variables"
+            note: "Test the admin endpoints with these credentials:",
+            admin_email: "admin@fatmaecommerce.com",
+            admin_password: "FatmaAdmin123!",
+            example_login: `curl -X POST ${req.protocol}://${req.get('host')}${baseUrl}/auth/login -H "Content-Type: application/json" -d '{"email":"admin@fatmaecommerce.com","password":"FatmaAdmin123!"}'`
+        },
+        portfolio_links: {
+            github_repo: "https://github.com/FatmaHossam5/e-commerce",
+            live_demo: `${req.protocol}://${req.get('host')}${baseUrl}/product/productList`,
+            documentation: `${req.protocol}://${req.get('host')}${baseUrl}`
         }
     })
 })
